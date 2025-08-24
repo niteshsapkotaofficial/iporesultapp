@@ -318,7 +318,6 @@ public class BulkResultFragmentActivity extends Fragment {
         Utilities.setBackground(linear_result_bulk_select_company_placement, 15, 0, "#FFFFFF", false);
         Utilities.setBackground(button_result_bulk_check, 15, 0, "#4f5b8b", true);
     }
-
     private void checkBulkResult() {
         if (listmapBoidList == null || listmapBoidList.isEmpty()) return;
 
