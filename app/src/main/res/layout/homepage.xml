@@ -171,7 +171,7 @@
 						android:layout_height="wrap_content"
 						android:paddingLeft="4dp"
 						android:paddingRight="4dp"
-						android:text="Fake"
+						android:text="Bulk"
 						android:textSize="12sp"
 						android:textColor="#FFFFFF"/>
 				</LinearLayout>
