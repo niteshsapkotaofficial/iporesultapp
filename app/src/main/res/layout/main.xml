@@ -1,0 +1,55 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<LinearLayout
+		android:id="@+id/main_linear"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#222945"
+		android:gravity="center_horizontal|center_vertical"
+		android:orientation="vertical"
+		android:layout_weight="1">
+
+
+
+		<LinearLayout
+			android:id="@+id/linear5"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="8dp"
+			android:orientation="vertical">
+			<TextView
+				android:id="@+id/textview_developer"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal|center_vertical"
+				android:text="  Developed by Nitesh Sapkota"
+				android:textSize="12sp"
+				android:textColor="#FFFFFF"/>
+			<ImageView
+				android:id="@+id/imageview_logo"
+				android:layout_width="250dp"
+				android:layout_height="40dp"
+				android:src="@drawable/ipo_result_logo"
+				android:scaleType="centerCrop"/>
+			<LinearLayout
+				android:id="@+id/linear6"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="right"
+				android:orientation="horizontal">
+				<TextView
+					android:id="@+id/textview_appname"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Bulk IPO Result Checking App"
+					android:textSize="12sp"
+					android:textColor="#FFFFFF"/>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

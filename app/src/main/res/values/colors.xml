@@ -1,0 +1,22 @@
+<resources>
+	<color	name="colorPrimary">#222945</color>
+	<color	name="colorPrimaryDark">#333A56</color>
+	<color	name="colorAccent">#222945</color>
+	<color	name="colorControlHighlight">#333A56</color>
+	<color	name="colorControlNormal">#222945</color>
+	<color name="colorPrimaryLight">#383F66</color>
+	<color name="white">#FFFFFF</color>
+	<color name="black">#000000</color>
+	<color name="gray">#9E9E9E</color>
+	<color name="gray_light">#F2F2F2</color>
+	<color name="red">#B71C1C</color>
+
+	<color name="result_green">#4CAF50</color> <!-- Green -->
+	<color name="result_red">#F44336</color>   <!-- Red -->
+	<color name="result_yellow">#FFC107</color> <!-- Yellow -->
+	<color name="result_window">#333A56</color>
+
+
+
+	<color name="edittext_hint">#9E9E9E</color>
+</resources>

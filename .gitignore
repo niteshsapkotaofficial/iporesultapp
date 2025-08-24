@@ -1,0 +1,26 @@
+# Gradle
+.gradle/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# IDE
+.idea/
+*.iml
+
+# Local config & secrets
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# Native/build aux
+.externalNativeBuild/
+.cxx/
+
+# Artifacts/logs
+*.apk
+*.aab
+*.ap_
+*.log
+captures/

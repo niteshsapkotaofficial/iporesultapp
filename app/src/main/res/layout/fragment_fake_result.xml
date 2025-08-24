@@ -1,0 +1,22 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:padding="8dp">
+
+
+    <ScrollView
+        android:id="@+id/scrollview_fake_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- Fake Result View -->
+        <include layout="@layout/result_view_single"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"/>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

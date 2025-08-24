@@ -1,0 +1,199 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<LinearLayout
+		android:id="@+id/linear1"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center_horizontal|center_vertical"
+		android:orientation="vertical">
+		<androidx.cardview.widget.CardView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal|center_vertical"
+			app:cardCornerRadius="10sp">
+
+		<LinearLayout
+			android:id="@+id/bg"
+			android:layout_width="260dp"
+			android:layout_height="wrap_content"
+			android:background="#FFFFFF"
+			android:orientation="vertical">
+
+			<LinearLayout
+				android:id="@+id/bg1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal|center_vertical"
+				android:orientation="vertical"
+				android:layout_weight="10">
+
+				<FrameLayout
+					android:id="@+id/framelayout_alloted"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content">
+
+					<ImageView
+						android:id="@+id/i2"
+						android:layout_width="260dp"
+						android:layout_height="256dp"
+						android:focusable="false"
+						android:scaleType="centerCrop"
+						android:src="@drawable/alloted"
+						tools:ignore="MissingConstraints" />
+
+					<androidx.cardview.widget.CardView
+						android:id="@+id/cardview_dismiss"
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						app:cardBackgroundColor="#000000"
+						app:cardCornerRadius="90sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.933"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintVertical_bias="0.067"
+						tools:ignore="MissingConstraints">
+
+						<ImageView
+							android:id="@+id/i1"
+							android:layout_width="15dp"
+							android:layout_height="15dp"
+							android:layout_gravity="center_vertical|center_horizontal"
+							android:src="@drawable/ic_baseline_close_24"
+							tools:ignore="MissingConstraints" />
+
+					</androidx.cardview.widget.CardView>
+
+					<androidx.cardview.widget.CardView
+						android:id="@+id/linear_alloted_company"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="#ffffff"
+						app:cardCornerRadius="2.5sp"
+						android:layout_marginRight="70dp"
+						android:layout_marginLeft="70dp"
+						android:gravity="center_horizontal|center_vertical"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintVertical_bias="0.640">
+
+
+						<TextView
+							android:id="@+id/textview_alloted_company"
+							android:ellipsize="end"
+							android:maxLines="1"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="4dp"
+							android:layout_marginRight="4dp"
+							android:text="IPO Result App"
+							android:textColor="#b71c1c"
+							android:textSize="8sp"/>
+					</androidx.cardview.widget.CardView>
+
+					<FrameLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="12dp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.502"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintVertical_bias="0.846"
+						tools:ignore="MissingConstraints">
+
+
+						<TextView
+							android:id="@+id/test1"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="top"
+							android:gravity="center_horizontal|center_vertical"
+							android:padding="8dp"
+							android:text="1/6"
+							android:textColor="#000000"
+							android:textSize="25sp" />
+
+						<TextView
+							android:id="@+id/test2"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="top"
+							android:gravity="center_horizontal|center_vertical"
+							android:padding="8dp"
+							android:text="1/6"
+							android:textColor="#FFFFFF"
+							android:textSize="25sp" />
+
+					</FrameLayout>
+
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+				</FrameLayout>
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/bg2"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal|bottom"
+				android:orientation="vertical">
+				<TextView
+					android:id="@+id/t2"
+					android:focusable="false"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10sp"
+					android:layout_marginBottom="10sp"
+					android:paddingLeft="10dp"
+					android:paddingRight="10dp"
+					android:gravity="center_horizontal|center_vertical"
+					android:text="Share your achievement with friends!"
+					android:textSize="10sp"
+					android:textColor="#4D4D4D"/>
+
+				<androidx.cardview.widget.CardView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginLeft="55dp"
+					android:layout_marginRight="55dp"
+					app:cardCornerRadius="5dp"
+					android:layout_marginBottom="10sp">
+					<LinearLayout
+						android:id="@+id/bt"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:padding="4dp"
+						android:layout_weight="1"
+						android:background="#F25C43"
+						android:gravity="center_horizontal|bottom"
+						android:orientation="horizontal">
+						<TextView
+							android:id="@+id/t4"
+							android:focusable="false"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:padding="8dp"
+							android:text="Share"
+							android:textSize="16sp"
+							android:textColor="#FFFFFF"/>
+					</LinearLayout>
+					</androidx.cardview.widget.CardView>
+				</LinearLayout>
+			</LinearLayout>
+		</androidx.cardview.widget.CardView>
+
+	</LinearLayout>
+</LinearLayout>

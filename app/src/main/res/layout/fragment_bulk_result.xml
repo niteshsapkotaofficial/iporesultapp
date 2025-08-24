@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/linear_result_bulk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header: company + bulk button -->
+        <LinearLayout
+            android:id="@+id/linear_result_bulk_window"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="@color/result_window"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/imageview_result_bulk_logo"
+                android:layout_width="175dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_bulk_result"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/textview_result_bulk_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Check multiple results at one click"
+                android:textSize="14sp"
+                android:textColor="#FFFFFF"/>
+            <!-- Select company spinner -->
+            <LinearLayout
+                android:id="@+id/linear_result_bulk_select_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="6dp"
+                android:background="#FFFFFF"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal|center_vertical">
+                <Spinner
+                    android:id="@+id/spinner_result_bulk_select_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:spinnerMode="dialog"/>
+            </LinearLayout>
+            <!-- Select company placement -->
+            <LinearLayout
+                android:id="@+id/linear_result_bulk_select_company_placement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="6dp"
+                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal|center_vertical">
+                <TextView
+                    android:id="@+id/textview_result_bulk_select_company_placement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:text="Loading Companies..."
+                    android:singleLine="true"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/button_result_bulk_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="#4F5B8B"
+                android:text="Bulk Check"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+        <!-- Empty state -->
+        <LinearLayout
+            android:id="@+id/linear_empty_bulk_boids"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/imageview_empty"
+                android:focusable="false"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/il_empty"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/textview_empty_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No BOIDs saved"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textview_empty_boids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add some from the 'Save' tab to run bulk checks."
+                android:textColor="#B0BEC5"
+                android:paddingTop="6dp"/>
+        </LinearLayout>
+
+        <!-- List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_result_bulk_boids"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>

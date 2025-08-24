@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "902629842664",
+    "firebase_url": "https://ipoallotmentprank-default-rtdb.firebaseio.com",
+    "project_id": "ipoallotmentprank",
+    "storage_bucket": "ipoallotmentprank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902629842664:android:21a6897692b52d9190b35d",
+        "android_client_info": {
+          "package_name": "com.nitsoft.ipoallotmentprank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902629842664-dpv2okgl6bkaf3ju07t7fuju05hub3do.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nitsoft.ipoallotmentprank",
+            "certificate_hash": "61ed377e85d386a8dfee6b864bd85b0bfaa5af81"
+          }
+        },
+        {
+          "client_id": "902629842664-hkdicn6pjerqv27mdtmv9bmk8lelgm1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFxWnAsDal70ORWG5y0GCAe2XhdW9IF3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902629842664-hkdicn6pjerqv27mdtmv9bmk8lelgm1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
