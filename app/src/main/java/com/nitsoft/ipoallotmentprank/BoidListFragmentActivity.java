@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -71,7 +72,7 @@ public class BoidListFragmentActivity extends Fragment {
     // --- Native Ad bits ---
     private NativeAd nativeAd;             // keep a reference to destroy later
     private boolean isAdLoaded = false;    // gate for adapter to insert ad row
-    private static final int AD_POSITION = 2; // insert ad at index 2 (3rd row)
+    private static final int AD_INTERVAL = 2; // insert ad after every 2 items
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -157,6 +158,11 @@ public class BoidListFragmentActivity extends Fragment {
             } else {
                 recyclerview_boid_list.getAdapter().notifyDataSetChanged();
             }
+            
+            // Refresh ad if list changed significantly
+            if (listmapBoidList.size() > 0 && listmapBoidList.size() % AD_INTERVAL == 0) {
+                loadNativeAd();
+            }
         }
     }
 
@@ -164,6 +170,10 @@ public class BoidListFragmentActivity extends Fragment {
 
     private void loadNativeAd() {
         MobileAds.initialize(requireContext(), initStatus -> {});
+        
+        // Build ad request with production settings
+        AdRequest.Builder adRequestBuilder = new AdRequest.Builder();
+        
         AdLoader adLoader = new AdLoader.Builder(requireContext(),
                 "ca-app-pub-7184690369277704/9303315304")
                 .forNativeAd(ad -> {
@@ -177,11 +187,26 @@ public class BoidListFragmentActivity extends Fragment {
                 .withAdListener(new AdListener() {
                     @Override public void onAdFailedToLoad(@NonNull LoadAdError adError) {
                         isAdLoaded = false;
+                        // Log error for debugging (remove in production if needed)
+                        Log.d("BoidListAd", "Ad failed to load: " + adError.getMessage());
+                    }
+                    
+                    @Override public void onAdLoaded() {
+                        Log.d("BoidListAd", "Ad loaded successfully");
                     }
                 })
                 .build();
 
-        adLoader.loadAd(new AdRequest.Builder().build());
+        adLoader.loadAd(adRequestBuilder.build());
+    }
+
+    private void scheduleAdRefresh() {
+        // Refresh ad every 5 minutes to ensure fresh content
+        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+            if (isAdded() && nativeAd != null) {
+                loadNativeAd();
+            }
+        }, 5 * 60 * 1000); // 5 minutes
     }
 
     private void bindNativeAd(NativeAd ad, NativeAdView adView) {
@@ -233,7 +258,7 @@ public class BoidListFragmentActivity extends Fragment {
 
         @Override
         public int getItemViewType(int position) {
-            if (isAdLoaded && position == Math.min(AD_POSITION, getItemCount() - 1)) {
+            if (isAdLoaded && shouldShowAdAtPosition(position)) {
                 return VIEW_TYPE_AD;
             }
             return VIEW_TYPE_ITEM;
@@ -242,16 +267,49 @@ public class BoidListFragmentActivity extends Fragment {
         @Override
         public int getItemCount() {
             int base = listmapBoidList.size();
-            return base + (isAdLoaded ? 1 : 0);
+            return base + (isAdLoaded ? getAdCount() : 0);
+        }
+
+        private int getAdCount() {
+            if (!isAdLoaded) return 0;
+            // Show ad after every 2 items, so for n items, we show floor(n/2) ads
+            return listmapBoidList.size() / AD_INTERVAL;
+        }
+
+        private boolean shouldShowAdAtPosition(int position) {
+            if (!isAdLoaded) return false;
+            
+            // Super simple: show ad at specific positions
+            // Position 2: AD (after 2 items)
+            // Position 5: AD (after 4 items) 
+            // Position 8: AD (after 6 items)
+            // Position 11: AD (after 8 items)
+            // etc.
+            
+            // Formula: position = 2 + (3 * adIndex) where adIndex starts at 0
+            // So positions: 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 53, 56, 59, 62, 65, 68, 71, 74, 77, 80, 83, 86, 89, 92, 95, 98
+            
+            return (position - 2) % 3 == 0 && position >= 2;
         }
 
         private int mapToDataIndex(int adapterPos) {
-            if (isAdLoaded) {
-                int adPos = Math.min(AD_POSITION, listmapBoidList.size());
-                if (adapterPos > adPos) return adapterPos - 1;
-                if (adapterPos == adPos) return -1; // ad row
+            if (!isAdLoaded) return adapterPos;
+            
+            // Count how many ads appear before this position
+            int adCount = 0;
+            for (int i = 0; i < adapterPos; i++) {
+                if (shouldShowAdAtPosition(i)) {
+                    adCount++;
+                }
             }
-            return adapterPos;
+            
+            // If this position is an ad, return -1
+            if (shouldShowAdAtPosition(adapterPos)) {
+                return -1; // ad row
+            }
+            
+            // Adjust for ads that appear before this position
+            return adapterPos - adCount;
         }
 
         @NonNull
@@ -276,6 +334,10 @@ public class BoidListFragmentActivity extends Fragment {
                 if (nativeAd != null) {
                     NativeAdView adView = (NativeAdView) holder.itemView;
                     bindNativeAd(nativeAd, adView);
+                    // Apply consistent styling to match BOID items with subtle border
+                    Utilities.cornerRadiusWithStroke(adView, "#555B7B", "#6B7A99", 1, 30, 30, 30, 30, true);
+                    // Add elevation to match BOID items
+                    adView.setElevation(2f);
                 }
                 return;
             }
